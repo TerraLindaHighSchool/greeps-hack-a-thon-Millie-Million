@@ -3,8 +3,8 @@ import greenfoot.*;
 /**
  * A Greep is an alien creature that likes to collect tomatoes.
  * 
- * @author (your name here)
- * @version 0.2
+ * @author Millie Harrison
+ * @version 3/10/20
  */
 public class Greep extends Creature
 {
@@ -33,16 +33,30 @@ public class Greep extends Creature
     public void act()
     {
         super.act();   // do not delete! leave as first statement in act().
-        if (carryingTomato()) {
-            if (atShip()) {
+        if (atWorldEdge() == true)
+        {
+            turn(90);
+        }
+        
+        if (atWater() == true)
+        {
+            turn(90);
+        }
+        
+        if (carryingTomato()) 
+        {
+            if (atShip()) 
+            {
                 dropTomato();
             }
-            else {
-                turnHome();
+            else 
+            {
                 move();
+                turnHome();
             }
         }
-        else {
+        else 
+        {
             move();
             checkFood();
         }
@@ -55,7 +69,8 @@ public class Greep extends Creature
     {
         // check whether there's a tomato pile here
         TomatoPile tomatoes = (TomatoPile) getOneIntersectingObject(TomatoPile.class);
-        if (tomatoes != null) {
+        if (tomatoes != null) 
+        {
             loadTomato();
             // Note: this attempts to load a tomato onto *another* Greep. It won't
             // do anything if we are alone here.
@@ -67,7 +82,7 @@ public class Greep extends Creature
      */
     public static String getAuthorName()
     {
-        return "Anonymous";  // write your name here!
+        return "Millie";  // write your name here!
     }
 
     /**
@@ -76,10 +91,12 @@ public class Greep extends Creature
      */
     public String getCurrentImage()
     {
-        if (carryingTomato()) {
+        if (carryingTomato()) 
+        {
             return "greep-with-food.png";
         }
-        else {
+        else 
+        {
             return "greep.png";
         }
     }
