@@ -257,7 +257,8 @@ public abstract class Creature extends Actor
      */
     public void spit(String color)
     {
-        if (timeToSpit == 0) {
+        if (timeToSpit == 0) 
+        {
             Paint paint = new Paint(color);
             getWorld().addObject(paint, getX(), getY());
             timeToSpit = TIME_TO_SPIT + Greenfoot.getRandomNumber(10);
